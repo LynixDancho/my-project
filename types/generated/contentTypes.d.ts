@@ -844,9 +844,9 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   attributes: {
     Category: Attribute.String;
     Description: Attribute.Text;
-    types: Attribute.Relation<
+    type: Attribute.Relation<
       'api::category.category',
-      'oneToMany',
+      'oneToOne',
       'api::type.type'
     >;
     createdAt: Attribute.DateTime;

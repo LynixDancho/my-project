@@ -18,10 +18,11 @@
     "Description": {
       "type": "text"
     },
-    "types": {
+    "type": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::type.type"
+      "relation": "oneToOne",
+      "target": "api::type.type",
+      "inversedBy": "category"
     }
   }
 }
