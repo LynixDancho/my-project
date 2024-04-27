@@ -17,6 +17,11 @@
     },
     "Description": {
       "type": "text"
+    },
+    "types": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::type.type"
     }
   }
 }
