@@ -842,13 +842,8 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Category: Attribute.String;
+    NameCategory: Attribute.String;
     Description: Attribute.Text;
-    type: Attribute.Relation<
-      'api::category.category',
-      'oneToOne',
-      'api::type.type'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -880,11 +875,6 @@ export interface ApiTypeType extends Schema.CollectionType {
   };
   attributes: {
     Type: Attribute.String;
-    category: Attribute.Relation<
-      'api::type.type',
-      'oneToOne',
-      'api::category.category'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
