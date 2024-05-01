@@ -21,9 +21,7 @@
       "required": false,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
+        "videos"
       ]
     },
     "DateOfSubmitting": {
@@ -38,13 +36,18 @@
     "NumberofDislikes": {
       "type": "biginteger"
     },
-    "Body": {
-      "type": "richtext"
-    },
     "type": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::type.type"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "Body": {
+      "type": "blocks"
     }
   }
 }
