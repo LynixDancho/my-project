@@ -391,6 +391,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     Body: Attribute.Blocks;
+    Description_Of_The_Research: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

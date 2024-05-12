@@ -48,6 +48,9 @@
     },
     "Body": {
       "type": "blocks"
+    },
+    "Description_Of_The_Research": {
+      "type": "text"
     }
   }
 }
