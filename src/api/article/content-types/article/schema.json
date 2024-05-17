@@ -30,12 +30,6 @@
     "DateofEdition": {
       "type": "date"
     },
-    "NumberofLikes": {
-      "type": "biginteger"
-    },
-    "NumberofDislikes": {
-      "type": "biginteger"
-    },
     "type": {
       "type": "relation",
       "relation": "oneToOne",
