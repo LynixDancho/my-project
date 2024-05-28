@@ -378,18 +378,20 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     ImagesOfResearch: Attribute.Media;
     DateOfSubmitting: Attribute.DateTime;
     DateofEdition: Attribute.Date;
-    type: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'api::type.type'
-    >;
     users_permissions_user: Attribute.Relation<
       'api::article.article',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    Body: Attribute.Blocks;
     Description_Of_The_Research: Attribute.Text;
+    Bbody: Attribute.Text;
+    UserName: Attribute.String;
+    Email: Attribute.Email;
+    Type: Attribute.String;
+    isPublished: Attribute.Boolean & Attribute.DefaultTo<false>;
+    IsSent: Attribute.Boolean & Attribute.DefaultTo<false>;
+    NumberofLikes: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    NumberofDisLikes: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -877,6 +879,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.role'
     >;
     avatar: Attribute.Media;
+    IsEditor: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

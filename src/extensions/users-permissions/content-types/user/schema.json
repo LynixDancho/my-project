@@ -72,6 +72,10 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "IsEditor": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

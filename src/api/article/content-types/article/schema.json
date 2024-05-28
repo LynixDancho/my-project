@@ -30,21 +30,41 @@
     "DateofEdition": {
       "type": "date"
     },
-    "type": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::type.type"
-    },
     "users_permissions_user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "Body": {
-      "type": "blocks"
-    },
     "Description_Of_The_Research": {
       "type": "text"
+    },
+    "Bbody": {
+      "type": "text"
+    },
+    "UserName": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "email"
+    },
+    "Type": {
+      "type": "string"
+    },
+    "isPublished": {
+      "type": "boolean",
+      "default": false
+    },
+    "IsSent": {
+      "type": "boolean",
+      "default": false
+    },
+    "NumberofLikes": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "NumberofDisLikes": {
+      "type": "biginteger",
+      "default": "0"
     }
   }
 }
