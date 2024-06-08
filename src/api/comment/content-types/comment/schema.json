@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "info": {
+    "singularName": "comment",
+    "pluralName": "comments",
+    "displayName": "comment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Senderusername": {
+      "type": "string",
+      "required": false
+    },
+    "RecieverUsername": {
+      "type": "string"
+    },
+    "SenderEmail": {
+      "type": "email"
+    },
+    "RecieverEmail": {
+      "type": "email"
+    },
+    "Comment": {
+      "type": "text"
+    },
+    "State": {
+      "type": "boolean",
+      "default": false
+    },
+    "ArticleId": {
+      "type": "integer",
+      "required": true
+    },
+    "isEditor": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

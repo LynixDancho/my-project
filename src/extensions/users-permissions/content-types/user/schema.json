@@ -76,6 +76,13 @@
     "IsEditor": {
       "type": "boolean",
       "default": false
+    },
+    "isReviewer": {
+      "type": "boolean",
+      "default": false
+    },
+    "Type": {
+      "type": "string"
     }
   }
 }

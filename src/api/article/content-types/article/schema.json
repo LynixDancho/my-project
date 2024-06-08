@@ -65,6 +65,18 @@
     "NumberofDisLikes": {
       "type": "biginteger",
       "default": "0"
+    },
+    "Reviewers": {
+      "type": "string",
+      "default": "None"
+    },
+    "ReviewApproved": {
+      "type": "boolean",
+      "default": false
+    },
+    "UsersLikedit": {
+      "type": "text",
+      "default": "None"
     }
   }
 }

@@ -362,114 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiArticleArticle extends Schema.CollectionType {
-  collectionName: 'articles';
-  info: {
-    singularName: 'article';
-    pluralName: 'articles';
-    displayName: 'Article';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String;
-    ImagesOfResearch: Attribute.Media;
-    DateOfSubmitting: Attribute.DateTime;
-    DateofEdition: Attribute.Date;
-    users_permissions_user: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    Description_Of_The_Research: Attribute.Text;
-    Bbody: Attribute.Text;
-    UserName: Attribute.String;
-    Email: Attribute.Email;
-    Type: Attribute.String;
-    isPublished: Attribute.Boolean & Attribute.DefaultTo<false>;
-    IsSent: Attribute.Boolean & Attribute.DefaultTo<false>;
-    NumberofLikes: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
-    NumberofDisLikes: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCategoryCategory extends Schema.CollectionType {
-  collectionName: 'categories';
-  info: {
-    singularName: 'category';
-    pluralName: 'categories';
-    displayName: 'Category';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    NameCategory: Attribute.String;
-    Description: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::category.category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::category.category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTypeType extends Schema.CollectionType {
-  collectionName: 'types';
-  info: {
-    singularName: 'type';
-    pluralName: 'types';
-    displayName: 'Type';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Type: Attribute.String;
-    category: Attribute.Relation<
-      'api::type.type',
-      'oneToOne',
-      'api::category.category'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -880,6 +772,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     avatar: Attribute.Media;
     IsEditor: Attribute.Boolean & Attribute.DefaultTo<false>;
+    isReviewer: Attribute.Boolean & Attribute.DefaultTo<false>;
+    Type: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -947,6 +841,191 @@ export interface PluginRedirectsRedirect extends Schema.CollectionType {
   };
 }
 
+export interface ApiAppealAppeal extends Schema.CollectionType {
+  collectionName: 'appeals';
+  info: {
+    singularName: 'appeal';
+    pluralName: 'appeals';
+    displayName: 'Appeal';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Attribute.String;
+    PlacesWork: Attribute.String;
+    Type: Attribute.String;
+    FurtherInformation: Attribute.Text;
+    EditorApproval: Attribute.Boolean & Attribute.DefaultTo<false>;
+    Email: Attribute.Email;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::appeal.appeal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::appeal.appeal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'Article';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    ImagesOfResearch: Attribute.Media;
+    DateOfSubmitting: Attribute.DateTime;
+    DateofEdition: Attribute.Date;
+    users_permissions_user: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    Description_Of_The_Research: Attribute.Text;
+    Bbody: Attribute.Text;
+    UserName: Attribute.String;
+    Email: Attribute.Email;
+    Type: Attribute.String;
+    isPublished: Attribute.Boolean & Attribute.DefaultTo<false>;
+    IsSent: Attribute.Boolean & Attribute.DefaultTo<false>;
+    NumberofLikes: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    NumberofDisLikes: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    Reviewers: Attribute.String & Attribute.DefaultTo<'None'>;
+    ReviewApproved: Attribute.Boolean & Attribute.DefaultTo<false>;
+    UsersLikedit: Attribute.Text & Attribute.DefaultTo<'None'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Category';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NameCategory: Attribute.String;
+    Description: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCommentComment extends Schema.CollectionType {
+  collectionName: 'comments';
+  info: {
+    singularName: 'comment';
+    pluralName: 'comments';
+    displayName: 'comment';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Senderusername: Attribute.String;
+    RecieverUsername: Attribute.String;
+    SenderEmail: Attribute.Email;
+    RecieverEmail: Attribute.Email;
+    Comment: Attribute.Text;
+    State: Attribute.Boolean & Attribute.DefaultTo<false>;
+    ArticleId: Attribute.Integer & Attribute.Required;
+    isEditor: Attribute.Boolean & Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::comment.comment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::comment.comment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTypeType extends Schema.CollectionType {
+  collectionName: 'types';
+  info: {
+    singularName: 'type';
+    pluralName: 'types';
+    displayName: 'Type';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Type: Attribute.String;
+    category: Attribute.Relation<
+      'api::type.type',
+      'oneToOne',
+      'api::category.category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -957,9 +1036,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::article.article': ApiArticleArticle;
-      'api::category.category': ApiCategoryCategory;
-      'api::type.type': ApiTypeType;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -969,6 +1045,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::redirects.redirect': PluginRedirectsRedirect;
+      'api::appeal.appeal': ApiAppealAppeal;
+      'api::article.article': ApiArticleArticle;
+      'api::category.category': ApiCategoryCategory;
+      'api::comment.comment': ApiCommentComment;
+      'api::type.type': ApiTypeType;
     }
   }
 }
